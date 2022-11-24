@@ -1,14 +1,48 @@
-import './App.css'
-// import Index from './components/Chart'
-import Visual from './components/Visual'
-
+import { useState } from "react";
+import axios from "axios";
+import "./App.css";
+import Form from "./components/Form";
 function App() {
+  const [values, setValues] = useState({
+    country: "",
+    end_year: "",
+    pest: "",
+    region: "",
+    sector: "",
+    source: "",
+    topic: "",
+    city: "",
+  });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:8080/api/data", values, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
   return (
-    <div className="App text-white lg:w-3/4 flex wrap">
-      <h1 className='text-center text-gray-50 text-2xl  p-2 font-bold'> Dashboard </h1>
-     <Visual />
-    </div>
-  )
+    <>
+      <div className="App">
+        <Form
+          handleSubmit={handleSubmit}
+          values={values}
+          handleChange={handleChange}
+        />
+      </div>
+    </>
+  );
 }
 
-export default App
+export default App;
