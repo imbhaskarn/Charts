@@ -1,17 +1,26 @@
 import React from "react";
+import { useContext } from "react";
+import FormContext from "../context/FormContext";
 
-const Form = ({ handleSubmit, handleChange, values }) => {
+const Form = () => {
+  const { handleSubmit, handleChange, values } = useContext(FormContext);
   return (
     <div className="relative m-auto  p-5 rounded lg:w-fit md:w-3/4 ">
-      <form onSubmit={handleSubmit} className="rounded bg-gray-800 flex justify-center items-center flex-col pb-4">
+      <form
+        onSubmit={handleSubmit}
+        className="rounded bg-gray-800 flex justify-center items-center flex-col pb-4"
+      >
         <div className="flex flex-wrap  gap-4 p-4  text-sm justify-center items-center">
           <div className="flex justify-center flex-col gap-2 items-start rounded text-white rounded">
             <label htmlFor="topic" className="w-full text-center">
               Topics:
             </label>
             <input
-              type="text" name="topic" id="topic"
-              onChange={handleChange} value={values.topic}
+              type="text"
+              name="topic"
+              id="topic"
+              onChange={handleChange}
+              value={values.topic}
               className="rounded px-3 bg-gray-700 py-1 text-gray-100 w-28"
             />
           </div>
@@ -20,8 +29,13 @@ const Form = ({ handleSubmit, handleChange, values }) => {
               End Year:
             </label>
             <input
-              type="number" min={1976} max={2030} step={1} value={values.endyear} name='end_year' id="endyear"
-              onChange={handleChange}
+              type="number"
+              min={1976}
+              max={2030}
+              step={1}
+              name="end_year"
+              id="endyear"
+              // value={values.endyear} onChange={handleChange}
               className="rounded px-3 bg-gray-700 py-1 text-gray-100 w-28"
             />
           </div>
@@ -30,8 +44,10 @@ const Form = ({ handleSubmit, handleChange, values }) => {
               Sector:
             </label>
             <input
-              type="text" name="sector" id="sector" value={values.sector}
-              onChange={handleChange}
+              type="text"
+              name="sector"
+              id="sector"
+              //  value={values.sector}  onChange={handleChange}
               className="rounded px-3 bg-gray-700 py-1 text-gray-100 w-28"
             />
           </div>
@@ -40,7 +56,10 @@ const Form = ({ handleSubmit, handleChange, values }) => {
               Region:
             </label>
             <input
-              type="text" name="region" id="region" value={values.region}
+              type="text"
+              name="region"
+              id="region"
+              value={values.region}
               onChange={handleChange}
               className="rounded px-3 bg-gray-700 py-1 text-gray-100 w-28"
             />
@@ -50,7 +69,10 @@ const Form = ({ handleSubmit, handleChange, values }) => {
               Pest:
             </label>
             <input
-              type="text" id="pest" name="pest" value={values.pest}
+              type="text"
+              id="pest"
+              name="pest"
+              value={values.pest}
               onChange={handleChange}
               className="rounded px-3 bg-gray-700 py-1 text-gray-100 w-28"
             />
@@ -60,8 +82,11 @@ const Form = ({ handleSubmit, handleChange, values }) => {
               Source:
             </label>
             <input
-              type="text" name="source" id="source" value={values.source}
+              type="text"
+              name="source"
+              id="source"
               onChange={handleChange}
+              value={values.source}
               className="rounded px-3 bg-gray-700 py-1 text-gray-100 w-28"
             />
           </div>
@@ -70,8 +95,11 @@ const Form = ({ handleSubmit, handleChange, values }) => {
               Country:
             </label>
             <input
-              type="text" name="country" id="country" value={values.country}
+              type="text"
+              name="country"
+              id="country"
               onChange={handleChange}
+              value={values.country}
               className="rounded px-3 bg-gray-700 py-1 text-gray-100 w-28"
             />
           </div>
@@ -80,8 +108,11 @@ const Form = ({ handleSubmit, handleChange, values }) => {
               City:
             </label>
             <input
-              type="text" name="city" id="city" value={values.city}
+              type="text"
+              name="city"
+              id="city"
               onChange={handleChange}
+              value={values.city}
               className="rounded px-3 bg-gray-700 py-1 text-gray-100 w-28"
             />
           </div>
